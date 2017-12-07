@@ -1,13 +1,11 @@
-# frozen_string_literal: true
-
-version = "0.1.2"
+version = "0.2.0"
 
 Gem::Specification.new do |s|
   s.platform    = Gem::Platform::RUBY
-  s.name        = "validate"
+  s.name        = "terramodtest"
   s.version     = version
-  s.summary     = "Validate utilities for terraform modules."
-  s.description = "Provide validate tools for terraform module developer."
+  s.summary     = "Test utilities for terraform modules."
+  s.description = "Provide test utilities for terraform module developer."
 
   s.required_ruby_version = ">= 2.3.0"
 
@@ -20,7 +18,7 @@ Gem::Specification.new do |s|
   s.requirements << "none"
 
   s.metadata = {
-    "source_code_uri" => "https://github.com/Azure/az-tf-mod-test-utils/tree/v#{version}/validate",
+    "source_code_uri" => "https://github.com/Azure/terramodtest/tree/v#{version}/validate",
     "changelog_uri"   => ""
   }
 
