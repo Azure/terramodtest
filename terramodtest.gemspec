@@ -18,8 +18,7 @@ Gem::Specification.new do |s|
   s.requirements << "none"
 
   s.metadata = {
-    "source_code_uri" => "https://github.com/Azure/terramodtest/tree/v#{version}/validate",
-    "changelog_uri"   => ""
+    "source_code_uri" => "https://github.com/Azure/terramodtest/tree/v#{version}/validate"
   }
 
   s.add_dependency "colorize",      "~> 0.8.0"
