@@ -12,7 +12,7 @@ else
 fi
 
 # Version, OS and Arch for Terraform.
-TERRAFORM_VERSION="0.11.1"
+TERRAFORM_VERSION="0.11.7"
 # Version for Ruby SDK.
 RUBY_VERSION="2.3.3"
 RUBY_INSTALLED_VERSION_REGEX="^(ruby) ([0-9].[0-9].[0-9]p[0-9]+)"
@@ -24,6 +24,8 @@ GEM_KITCHEN_TERRAFORM_VERSION="3.0.0"
 GEM_TEST_KITCHEN_VERSION="1.16.0"
 GEM_RAKE_VERSION="12.3.0"
 GEM_RSPEC_VERSION="3.7.0"
+# Version for Golang
+GOLANG_VERSION = "1.10.3"
 
 # Install rbenv & ruby-build.
 if type rbenv &> /dev/null; then
@@ -42,7 +44,7 @@ else
             libreadline6-dev zlib1g-dev libncurses5-dev libffi-dev libgdbm3 \
             libgdbm-dev unzip
     git clone https://github.com/rbenv/rbenv.git ~/.rbenv
-    export PATH="$HOME/.rbenv/bin:$PATH"
+    export PATH="$HOME/.rbenv/bin:$HOME/.rbenv/versions/2.3.3/bin:$PATH"
     # ruby-build.
     git clone https://github.com/rbenv/ruby-build.git ~/.rbenv/plugins/ruby-build
   else # darwin*
@@ -80,5 +82,11 @@ gem update --system && \
   gem install test-kitchen --no-document --version=${GEM_TEST_KITCHEN_VERSION} && \
   gem install rake --no-document --version=${GEM_RAKE_VERSION} && \
   gem install rspec --no-document --version=${GEM_RSPEC_VERSION}
+
+curl -Os https://storage.googleapis.com/golang/go${GOLANG_VERSION}.linux-amd64.tar.gz >/dev/null 2>&1 && \
+  tar -zxvf go${GOLANG_VERSION}.linux-amd64.tar.gz -C /usr/local/ >/dev/null
+export PATH="$HOME/.rbenv/bin:$HOME/.rbenv/versions/2.3.3/bin:/usr/local/go/bin:$PATH"
+export GOPATH="$HOME/go"
+
 DOUBLE DEALS
 PROFILE
