@@ -75,10 +75,8 @@ rm terraform_${TERRAFORM_VERSION}_SHA256SUMS
 rm terraform_${TERRAFORM_VERSION}_SHA256SUMS.sig
 
 # Install Go SDK
-curl -Os https://storage.googleapis.com/golang/go1.10.3.linux-amd64.tar.gz && \
-  tar -zxvf go1.10.3.linux-amd64.tar.gz -C /usr/local/
-export PATH="$HOME/.rbenv/bin:$HOME/.rbenv/versions/2.3.3/bin:/usr/local/go/bin:$PATH"
-export GOPATH="$HOME/go"
+curl -Os https://storage.googleapis.com/golang/go${GOLANG_VERSION}.linux-amd64.tar.gz >/dev/null 2>&1 && \
+  tar -zxvf go${GOLANG_VERSION}.linux-amd64.tar.gz -C /usr/local/ >/dev/null
 
 # Install Gem packages.
 gem update --system && \
