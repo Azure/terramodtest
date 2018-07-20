@@ -74,6 +74,12 @@ rm terraform_${TERRAFORM_VERSION}_${TERRAFORM_OS_ARCH}.zip
 rm terraform_${TERRAFORM_VERSION}_SHA256SUMS
 rm terraform_${TERRAFORM_VERSION}_SHA256SUMS.sig
 
+# Install Go SDK
+curl -Os https://storage.googleapis.com/golang/go${GOLANG_VERSION}.linux-amd64.tar.gz >/dev/null 2>&1 && \
+  tar -zxvf go${GOLANG_VERSION}.linux-amd64.tar.gz -C /usr/local/ >/dev/null
+export PATH="$HOME/.rbenv/bin:$HOME/.rbenv/versions/${RUBY_VERSION}/bin:/usr/local/go/bin:$PATH"
+export GOPATH="$HOME/go"
+
 # Install Gem packages.
 gem update --system && \
   gem install bundler --no-document --version=${GEM_BUNDLER_VERSION} --user-install && \
@@ -82,8 +88,3 @@ gem update --system && \
   gem install test-kitchen --no-document --version=${GEM_TEST_KITCHEN_VERSION} --user-install && \
   gem install rake --no-document --version=${GEM_RAKE_VERSION} --user-install && \
   gem install rspec --no-document --version=${GEM_RSPEC_VERSION} --user-install
-
-curl -Os https://storage.googleapis.com/golang/go${GOLANG_VERSION}.linux-amd64.tar.gz >/dev/null 2>&1 && \
-  tar -zxvf go${GOLANG_VERSION}.linux-amd64.tar.gz -C /usr/local/ >/dev/null
-export PATH="$HOME/.rbenv/bin:$HOME/.rbenv/versions/${RUBY_VERSION}/bin:/usr/local/go/bin:$PATH"
-export GOPATH="$HOME/go"
