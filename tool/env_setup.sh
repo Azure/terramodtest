@@ -25,7 +25,7 @@ GEM_TEST_KITCHEN_VERSION="1.16.0"
 GEM_RAKE_VERSION="12.3.0"
 GEM_RSPEC_VERSION="3.7.0"
 # Version for Golang
-GOLANG_VERSION = "1.10.3"
+GOLANG_VERSION="1.10.3"
 
 # Install rbenv & ruby-build.
 if type rbenv &> /dev/null; then
