@@ -86,3 +86,7 @@ gem update --system && \
   gem install test-kitchen --no-document --version=${GEM_TEST_KITCHEN_VERSION} --user-install && \
   gem install rake --no-document --version=${GEM_RAKE_VERSION} --user-install && \
   gem install rspec --no-document --version=${GEM_RSPEC_VERSION} --user-install
+
+mkdir $HOME/go
+mkdir $HOME/go/bin
+mkdir $HOME/go/src
