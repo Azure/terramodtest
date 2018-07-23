@@ -24,7 +24,7 @@ GEM_KITCHEN_TERRAFORM_VERSION="3.0.0"
 GEM_TEST_KITCHEN_VERSION="1.16.0"
 GEM_RAKE_VERSION="12.3.0"
 GEM_RSPEC_VERSION="3.7.0"
-# Version for Golang
+# Version for Golang.
 GOLANG_VERSION="1.10.3"
 
 # Install rbenv & ruby-build.
@@ -69,12 +69,12 @@ curl -Os https://releases.hashicorp.com/terraform/${TERRAFORM_VERSION}/terraform
   gpg --verify terraform_${TERRAFORM_VERSION}_SHA256SUMS.sig terraform_${TERRAFORM_VERSION}_SHA256SUMS && \
   shasum -a 256 -c terraform_${TERRAFORM_VERSION}_SHA256SUMS 2>&1 | grep "${TERRAFORM_VERSION}_${TERRAFORM_OS_ARCH}.zip:\sOK" && \
   unzip -o terraform_${TERRAFORM_VERSION}_${TERRAFORM_OS_ARCH}.zip -d /usr/local/bin
-# Cleanup downloaded files
+# Cleanup downloaded files.
 rm terraform_${TERRAFORM_VERSION}_${TERRAFORM_OS_ARCH}.zip
 rm terraform_${TERRAFORM_VERSION}_SHA256SUMS
 rm terraform_${TERRAFORM_VERSION}_SHA256SUMS.sig
 
-# Install Go SDK
+# Install Go SDK.
 curl -Os https://storage.googleapis.com/golang/go${GOLANG_VERSION}.linux-amd64.tar.gz >/dev/null 2>&1 && \
   tar -zxvf go${GOLANG_VERSION}.linux-amd64.tar.gz -C /usr/local/ >/dev/null
 
@@ -86,7 +86,3 @@ gem update --system && \
   gem install test-kitchen --no-document --version=${GEM_TEST_KITCHEN_VERSION} --user-install && \
   gem install rake --no-document --version=${GEM_RAKE_VERSION} --user-install && \
   gem install rspec --no-document --version=${GEM_RSPEC_VERSION} --user-install
-
-mkdir $HOME/go
-mkdir $HOME/go/bin
-mkdir $HOME/go/src
