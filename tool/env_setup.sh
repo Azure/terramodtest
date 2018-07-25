@@ -86,3 +86,8 @@ gem update --system && \
   gem install test-kitchen --no-document --version=${GEM_TEST_KITCHEN_VERSION} --user-install && \
   gem install rake --no-document --version=${GEM_RAKE_VERSION} --user-install && \
   gem install rspec --no-document --version=${GEM_RSPEC_VERSION} --user-install
+
+# install go dep
+export GOPATH="$HOME/go"
+export PATH="$HOME/.rbenv/bin:$HOME/.rbenv/versions/${RUBY_VERSION}/bin:/usr/local/go/bin:$GOPATH/bin:$PATH"
+curl https://raw.githubusercontent.com/golang/dep/master/install.sh | sh
