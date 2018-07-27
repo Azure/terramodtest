@@ -4,8 +4,10 @@ set -e
 # Check if OS is supported.
 if [[ "$OSTYPE" == "linux-gnu" ]]; then
   TERRAFORM_OS_ARCH=linux_amd64
+  GOLANG_OS_ARCH=linux-amd64
 elif [[ "$OSTYPE" == "darwin"* ]]; then
   TERRAFORM_OS_ARCH=darwin_amd64
+  GOLANG_OS_ARCH=darwin-amd64
 else
   echo "Unsupported Operating System: $OSTYPE" 1>&2
   exit 1
@@ -75,8 +77,8 @@ rm terraform_${TERRAFORM_VERSION}_SHA256SUMS
 rm terraform_${TERRAFORM_VERSION}_SHA256SUMS.sig
 
 # Install Go SDK.
-curl -Os https://storage.googleapis.com/golang/go${GOLANG_VERSION}.linux-amd64.tar.gz >/dev/null 2>&1 && \
-  tar -zxvf go${GOLANG_VERSION}.linux-amd64.tar.gz -C /usr/local/ >/dev/null
+curl -Os https://storage.googleapis.com/golang/go${GOLANG_VERSION}.${GOLANG_OS_ARCH}.tar.gz >/dev/null 2>&1 && \
+  tar -zxvf go${GOLANG_VERSION}.${GOLANG_OS_ARCH}.tar.gz -C /usr/local/ >/dev/null
 
 # Install Gem packages.
 gem update --system && \
