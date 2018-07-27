@@ -44,7 +44,7 @@ else
             libreadline6-dev zlib1g-dev libncurses5-dev libffi-dev libgdbm3 \
             libgdbm-dev unzip
     git clone https://github.com/rbenv/rbenv.git ~/.rbenv
-    export PATH="$HOME/.rbenv/bin:$HOME/.rbenv/versions/${RUBY_VERSION}/bin:$PATH"
+    export PATH="$HOME/.rbenv/bin:$PATH"
     # ruby-build.
     git clone https://github.com/rbenv/ruby-build.git ~/.rbenv/plugins/ruby-build
   else # darwin*
@@ -82,12 +82,12 @@ curl -Os https://storage.googleapis.com/golang/go${GOLANG_VERSION}.linux-amd64.t
 gem update --system && \
   gem install bundler --no-document --version=${GEM_BUNDLER_VERSION} --user-install && \
   gem install colorize --no-document --version=${GEM_COLORIZE} --user-install && \
-  gem install kitchen-terraform --no-document --version=${GEM_KITCHEN_TERRAFORM_VERSION} --user-install && \
-  gem install test-kitchen --no-document --version=${GEM_TEST_KITCHEN_VERSION} --user-install && \
   gem install rake --no-document --version=${GEM_RAKE_VERSION} --user-install && \
   gem install rspec --no-document --version=${GEM_RSPEC_VERSION} --user-install
 
-# install go dep
+# Refresh Go environment.
 export GOPATH="$HOME/go"
-export PATH="$HOME/.rbenv/bin:$HOME/.rbenv/versions/${RUBY_VERSION}/bin:/usr/local/go/bin:$GOPATH/bin:$PATH"
+export PATH="/usr/local/go/bin:$GOPATH/bin:$PATH"
+
+# Install Go dep.
 curl https://raw.githubusercontent.com/golang/dep/master/install.sh | sh
