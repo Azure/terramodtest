@@ -2,7 +2,7 @@
 Test utilities for azure terraform module developer to write tests more easily.
 
 # Terraform 0.12 support
-This repo has been forked from Azure/terramodtest to provide terraform 0.12 support.
+This repo provides terraform 0.12 support.
 
 # Contributing
 
