@@ -1,13 +1,15 @@
 require 'colorize'
 require 'fileutils'
 
+# To use Terraform 0.12 syntax, set ENV variable TERRAFORM_VERSION to 0.12.*
+
 def lint_tf
   # Do the linting on current working folder.
   print "INFO: Linting Terraform configurations...\n".yellow  
   
   if ENV['TERRAFORM_VERSION'].start_with?("0.12")
     message = `terraform validate >/dev/null`
-  elsif ENV['TERRAFORM_VERSION'].start_with?("0.11")
+  else
     message = `terraform validate -check-variables=false 2>&1`
   end
 
@@ -24,7 +26,7 @@ def style_tf
   print "INFO: Styling Terraform configurations...\n".yellow  
   if ENV['TERRAFORM_VERSION'].start_with?("0.12")
     message = `terraform fmt -check 2>&1`
-  elsif ENV['TERRAFORM_VERSION'].start_with?("0.11")
+  else
     message = `terraform fmt -check=true 2>&1`
   end
 
@@ -41,7 +43,7 @@ def format_tf
   print "INFO: Formatting Terraform configurations...\n".yellow
   if ENV['TERRAFORM_VERSION'].start_with?("0.12")
     message = `terraform fmt -diff 2>&1`
-  elsif ENV['TERRAFORM_VERSION'].start_with?("0.11")
+  else
     message = `terraform fmt -diff=true 2>&1`
   end
 
