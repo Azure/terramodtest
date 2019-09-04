@@ -11,7 +11,7 @@ def lint_tf
   if ENV['TERRAFORM_VERSION'].nil? || ENV['TERRAFORM_VERSION'].start_with?("0.11.")
     message = `terraform validate -check-variables=false 2>&1`
   elsif ENV['TERRAFORM_VERSION'].start_with?("0.12.")
-    essage = `terraform validate >/dev/null`
+    message = `terraform validate >/dev/null`
   end
 
   # Check the linting message.
