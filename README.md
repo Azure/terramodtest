@@ -1,8 +1,8 @@
 # Azure Terraform Module Test Utilities
 Test utilities for azure terraform module developer to write tests more easily.
 
-# Terraform 0.12 support
-This module provides terraform 0.12 support alongside 0.11.
+# Terraform 0.13 support
+This module provides terraform 0.13 support, 0.12 support alongside 0.11.
 
 # Contributing
 

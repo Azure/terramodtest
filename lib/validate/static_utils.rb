@@ -17,7 +17,7 @@ def lint_tf
   tf_version = get_version_tf
   if tf_version.start_with?("v0.11.")
     message = `terraform validate -check-variables=false 2>&1`
-  elsif tf_version.start_with?("v0.12.")
+  elsif tf_version.start_with?("v0.12.") || tf_version.start_with?("v0.13.")
     success = system ("terraform init")
        if not success
          raise "ERROR: terraform init failed!\n".red
@@ -39,7 +39,7 @@ def style_tf
   tf_version = get_version_tf
   if tf_version.start_with?("v0.11.")
     message = `terraform fmt -check=true 2>&1`
-  elsif tf_version.start_with?("v0.12.")
+  elsif tf_version.start_with?("v0.12.") || tf_version.start_with?("v0.13.")
     message = `terraform fmt -check 2>&1`
   end
 
@@ -57,7 +57,7 @@ def format_tf
   tf_version = get_version_tf
   if tf_version.start_with?("v0.11.")
     message = `terraform fmt -diff=true 2>&1`
-  elsif tf_version.start_with?("v0.12.")
+  elsif tf_version.start_with?("v0.12.") || tf_version.start_with?("v0.13.")
     message = `terraform fmt -diff 2>&1`
   end
 
