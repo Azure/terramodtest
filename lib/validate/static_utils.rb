@@ -4,7 +4,7 @@ require 'fileutils'
 def get_version_tf
    message = `terraform -version`
    mlist = message.split(" ")
-   if mlist.size>2
+   if mlist.size>=2
      return mlist[1]
    else
      raise "ERROR: Get Terraform Version failed!\n#{message}\n".red
