@@ -53,6 +53,38 @@ def style_tf
   end
 end
 
+def readme_style_tf
+  # Do the style checking on current working folder.
+  print "INFO: Styling Terraform README...\n".yellow
+  message = `terrafmt fmt README.md -c 2>&1`
+
+  # Check the styling message.
+  if not message.empty?
+    raise "ERROR: Styling Terraform README failed!\n#{message}".red
+  else
+    print "INFO: Done!\n".green
+  end
+end
+
+def fixture_style_tf
+  # Do the style checking on current working folder.
+  print "INFO: Styling Terraform fixture configurations...\n".yellow
+  tf_version = get_version_tf
+  message = ""
+  if tf_version.start_with?("v0.11.")
+    message = `terraform fmt -check=true ./test/fixture 2>&1`
+  elsif tf_version.start_with?("v0.12.") || tf_version.start_with?("v0.13.")
+    message = `terraform fmt -check ./test/fixture 2>&1`
+  end
+
+  # Check the styling message.
+  if not message.empty?
+    raise "ERROR: Styling Terraform fixture onfigurations failed!\n#{message}\nTF version is #{tf_version}\n".red
+  else
+    print "INFO: Done!\n".green
+  end
+end
+
 def format_tf
   # Apply the canonical format and style on current working folder.
   print "INFO: Formatting Terraform configurations...\n".yellow
